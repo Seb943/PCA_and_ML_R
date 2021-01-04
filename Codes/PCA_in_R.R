@@ -5,11 +5,10 @@ library(dplyr)
 df <- read.csv('https://raw.githubusercontent.com/Seb943/PCA_and_ML_R/main/Data/Example_dataset.csv') %>% dplyr::select(-X)
 
 # Build datasets for winner predictions
-df <- df %>% dplyr::select(Winner, B365_OT_H, B365_OT_A, TotWins_home, TotLose_home, 
+df <- df %>% dplyr::select(B365_OT_H, B365_OT_A, TotWins_home, TotLose_home, 
                            TotWins_away, TotLose_away, Elo_home, Elo_away, 
                            Moy_scored_season_home, Moy_against_season_home, 
                            Moy_scored_season_away, Moy_against_season_away)
-df['Winner'] <- lapply(df['Winner'] , factor)
 tableTRAIN <- head(df, 0.8*dim(df)[1])
 tableTEST <- tail(df, 0.2*dim(df)[1])
 
